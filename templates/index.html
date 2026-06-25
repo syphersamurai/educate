@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurodiverse Learning Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container fade-in">
+        <header>
+            <h1>Adaptive Educator</h1>
+            <p class="subtitle">Personalizing education through data and empathy.</p>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert">
+              {% for message in messages %}
+                <p>{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <main class="card">
+            <form id="lesson-form" method="POST" action="/" onsubmit="showLoading()">
+                
+                <section class="form-section">
+                    <div class="section-header">
+                        <i data-lucide="bar-chart-2"></i>
+                        <h2>Student Metrics</h2>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="study_hours">Weekly Study Hours</label>
+                            <input type="number" name="study_hours" id="study_hours" min="0" max="100" placeholder="15" required>
+                        </div>
+                        <div class="form-group col">
+                            <label for="attendance">Attendance Rate (%)</label>
+                            <input type="number" name="attendance" id="attendance" min="0" max="100" placeholder="95" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="stress_level">Current Stress Level</label>
+                            <select name="stress_level" id="stress_level" required>
+                                <option value="" disabled selected>Select level</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="motivation">Motivation Level</label>
+                            <select name="motivation" id="motivation" required>
+                                <option value="" disabled selected>Select level</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <div class="section-header">
+                        <i data-lucide="user"></i>
+                        <h2>Profile & Observations</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">Neurodiverse Condition</label>
+                        <select name="condition" id="condition">
+                            <option value="None">None / Neurotypical</option>
+                            <option value="ADHD">ADHD</option>
+                            <option value="ASD">Autism Spectrum Disorder (ASD)</option>
+                            <option value="Dyslexia">Dyslexia</option>
+                            <option value="ADHD & ASD">Combined ADHD & ASD</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grade">Grade Level</label>
+                        <select name="grade" id="grade" required>
+                            <option value="" disabled selected>Select Grade</option>
+                            <option value="3rd Grade">3rd Grade</option>
+                            <option value="4th Grade">4th Grade</option>
+                            <option value="5th Grade">5th Grade</option>
+                            <option value="6th Grade">6th Grade</option>
+                            <option value="7th Grade">7th Grade</option>
+                            <option value="8th Grade">8th Grade</option>
+                            <option value="High School">High School</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custom_notes">Teacher's Clinical/Social Observations</label>
+                        <textarea name="custom_notes" id="custom_notes" rows="3" placeholder="e.g. Responds well to visual praise, sensitive to loud colors, uses fidget tools..."></textarea>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <div class="section-header">
+                        <i data-lucide="book-open"></i>
+                        <h2>Lesson Scope</h2>
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">Lesson Topic</label>
+                        <input type="text" id="topic" name="topic" placeholder="e.g. Quantum Physics, Basic Addition, Plate Tectonics" required>
+                    </div>
+                </section>
+
+                <button type="submit" id="submit-btn" class="btn primary-btn">
+                    <i data-lucide="sparkles"></i>
+                    Generate Adaptive Lesson
+                </button>
+            </form>
+            
+            <div id="loading-state" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>Synthesizing tailored curriculum...</p>
+                <small style="color: #64748b; margin-top: 0.5rem;">Analyzing metrics and generating content</small>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        function showLoading() {
+            document.getElementById('loading-state').classList.remove('hidden');
+            document.getElementById('submit-btn').disabled = true;
+            document.getElementById('submit-btn').style.opacity = '0.5';
+        }
+    </script>
+</body>
+</html>
