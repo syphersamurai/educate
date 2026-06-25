@@ -1,6 +1,6 @@
-# Adaptive Educator
+# Neurodiverse Learning Platform
 
-Adaptive Educator is an intelligent, personalized learning platform that integrates Machine Learning (ML) and Large Language Models (LLM) to dynamically generate tailored educational content for students. By analyzing student metrics—such as study hours, attendance, stress levels, and motivation—the platform predicts the student's learning style and academic performance. This profile is then used alongside any neurodiverse conditions or teacher notes to synthesize a customized lesson plan that meets the student's unique needs.
+Neurodiverse Learning Platform is an intelligent, personalized learning platform that integrates Machine Learning (ML) and Large Language Models (LLM) to dynamically generate tailored educational content for students. By analyzing student metrics—such as study hours, attendance, stress levels, and motivation—the platform predicts the student's learning style and academic performance. This profile is then used alongside any neurodiverse conditions or teacher notes to synthesize a customized lesson plan that meets the student's unique needs.
 
 ## Features
 
@@ -65,4 +65,4 @@ The ML model expects a dataset named `student_performance.csv` with columns such
 
 ## GitHub Repository Link
 
-**Repository URL:** [https://github.com/syphersamurai/educate](https://github.com/syphersamurai/educate)
+**Repository URL:** [https://github.com/syphersamurai/neurodiverse_learning_platform](https://github.com/syphersamurai/neurodiverse_learning_platform)
